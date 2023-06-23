@@ -25,9 +25,12 @@ $ ./configure && make && make install
 ### 3. `~/.zshrc`に下記を追加:
 
 ```
+bindkey "^I" menu-expand-or-complete
 export ZSH_ROMAJI_COMPLETE_HOME={このリポジトリのディレクトリ}
 . "${ZSH_ROMAJI_COMPLETE_HOME}/init.zsh"
 ```
+
+zshのデフォルトでは `^I` は `expand-or-complete`ですが、それだと候補が複数ある場合に何も補完されません。
 
 ### 4. シェルを再起動
 
