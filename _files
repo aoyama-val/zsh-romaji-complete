@@ -12,11 +12,10 @@ done
 kanji-to-romaji() {
     local tmp="/tmp/kanji-to-romaji"
     cat > "$tmp"
-    if iconv -l | grep -i utf8-mac; then
-        local f=utf8-mac
-    else
-        local f=utf8
-    fi
+    case $OSTYPE in
+        darwin*) local f=utf8-mac ;;
+        *) local f=utf8 ;;
+    esac
     paste <(iconv -f $f -t euc-jp "$tmp" | kakasi -w | kakasi -Ja -Ha -Ka -Ea | sed 's/ //g') "$tmp"
     rm "$tmp"
 }
