@@ -1,0 +1,31 @@
+# vim: ft=zsh:
+
+# デフォルトの_filesを呼ぶ
+for dir in $fpath; do
+    if [ "$dir" != "${ZSH_ROMAJI_COMPLETE_HOME}" -a -e "$dir/_files" ]; then
+        . "$dir/_files"
+        break
+    fi
+done
+
+# 日本語をローマ字に変換し、元の日本語と併記する
+kanji-to-romaji() {
+    local tmp="/tmp/kanji-to-romaji"
+    cat > "$tmp"
+    if iconv -l | grep -i utf8-mac; then
+        local f=utf8-mac
+    else
+        local f=utf8
+    fi
+    paste <(iconv -f $f -t euc-jp "$tmp" | kakasi -w | kakasi -Ja -Ha -Ka -Ea | sed 's/ //g') "$tmp"
+    rm "$tmp"
+}
+
+local tokens=(${(z)LBUFFER})
+local word="${tokens[-1]}"
+local matches=$(command ls | grep '[^ -~]' | kanji-to-romaji | grep -i "^${word}" | awk -F $'\t' '{print $NF}')
+local files=(${(f)matches})   # 改行でsplit
+
+if [ "$files" != "" ]; then
+    compadd -U $files
+fi
