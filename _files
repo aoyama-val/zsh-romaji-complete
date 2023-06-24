@@ -27,5 +27,5 @@ local matches=$(command ls | grep '[^ -~]' | kanji-to-romaji | grep -i "^${word}
 local files=(${(f)matches})   # 改行でsplit
 
 if [ "$files" != "" ]; then
-    compadd -U $files
+    compadd -J file -U $files
 fi
