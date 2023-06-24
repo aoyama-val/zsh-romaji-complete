@@ -29,3 +29,5 @@ local files=(${(f)matches})   # 改行でsplit
 if [ "$files" != "" ]; then
     compadd -J file -U $files
 fi
+
+return 0
