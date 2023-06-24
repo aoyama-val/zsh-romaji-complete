@@ -21,8 +21,7 @@ kanji-to-romaji() {
     rm "$tmp"
 }
 
-local tokens=(${(z)LBUFFER})
-local word="${tokens[-1]}"
+local word="${words[CURRENT]}"
 local matches=$(command ls | grep '[^ -~]' | kanji-to-romaji | grep -i "^${word}" | awk -F $'\t' '{print $NF}')
 local files=(${(f)matches})   # 改行でsplit
 
