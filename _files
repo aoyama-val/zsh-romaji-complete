@@ -1,5 +1,4 @@
 #compdef -redirect-,-default-,-default-
-# vim: ft=zsh:
 
 # デフォルトの_filesを呼ぶ
 for dir in $fpath; do
