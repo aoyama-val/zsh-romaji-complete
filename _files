@@ -4,7 +4,7 @@
 # デフォルトの_filesを呼ぶ
 for dir in $fpath; do
     if [ "$dir" != "${ZSH_ROMAJI_COMPLETE_HOME}" -a -e "$dir/_files" ]; then
-        . "$dir/_files"
+        . "$dir/_files" "$@"
         break
     fi
 done
