@@ -39,6 +39,7 @@ $ git clone git@github.com:aoyama-val/zsh-romaji-complete.git
 
 ```
 bindkey "^I" menu-expand-or-complete
+fpath+=({クローンしたディレクトリ} $fpath)
 . {クローンしたディレクトリ}/zsh-romaji-complete.plugin.zsh
 ```
 

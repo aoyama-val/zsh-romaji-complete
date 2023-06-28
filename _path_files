@@ -2,7 +2,7 @@
 
 # デフォルトの_path_filesを呼ぶ
 for dir in $fpath; do
-    if [ "$dir" != "${ZSH_ROMAJI_COMPLETE_HOME}" -a -e "$dir/_path_files" ]; then
+    if [ "$dir" != "${0:h:A}" -a -e "$dir/_path_files" ]; then
         . "$dir/_path_files" "$@"
         break
     fi
