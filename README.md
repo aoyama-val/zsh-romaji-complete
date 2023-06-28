@@ -18,16 +18,14 @@ $ ./configure && make && make install
 
 ### 2. zsh-romaji-completeをインストール
 
-#### a) With a plugin manager
+#### a) Plugin manager
 
+zinit
 ```
-bindkey "^I" menu-expand-or-complete
-zplug "aoyama-val/zsh-romaji-complete"
+zinit light aoyama-val/zsh-romaji-complete
 ```
 
-などと。
-
-#### b) Manually install
+#### b) Manual
 
 お好きな場所にクローンします:
 
