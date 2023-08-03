@@ -16,7 +16,7 @@ kanji-to-romaji() {
         darwin*) local f=utf8-mac ;;
         *) local f=utf8 ;;
     esac
-    paste <(iconv -f $f -t euc-jp "$tmp" | kakasi -w | kakasi -Ja -Ha -Ka -Ea | sed 's/ //g') "$tmp"
+    paste <(iconv --unicode-subst='<U+%04X>' -f $f -t euc-jp "$tmp" | kakasi -w | kakasi -Ja -Ha -Ka -Ea | sed 's/ //g') "$tmp"
     rm "$tmp"
 }
 
