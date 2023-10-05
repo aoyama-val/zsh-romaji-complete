@@ -17,11 +17,10 @@ kanji-to-romaji() {
         *) local f=utf8 ;;
     esac
     if iconv --version 2> /dev/null | grep 'GNU libiconv'; then
-        local SUBST="--unicode-subst='<U+%04X>'"
+        paste <(iconv --unicode-subst='<U+%04X>' -f $f -t euc-jp "$tmp" | kakasi -w | kakasi -Ja -Ha -Ka -Ea | sed 's/ //g') "$tmp"
     else
-        local SUBST=""
+        paste <(iconv -f $f -t euc-jp "$tmp" | kakasi -w | kakasi -Ja -Ha -Ka -Ea | sed 's/ //g') "$tmp"
     fi
-    paste <(iconv $SUBST -f $f -t euc-jp "$tmp" | kakasi -w | kakasi -Ja -Ha -Ka -Ea | sed 's/ //g') "$tmp"
     rm "$tmp"
 }
 
