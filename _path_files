@@ -18,7 +18,7 @@ kanji-to-romaji() {
     esac
     if iconv --version 2> /dev/null | grep 'GNU libiconv' > /dev/null; then
         # iconv (GNU libiconv 1.11) (Mac)
-        paste <(iconv --unicode-subst='<U+%04X>' -f $f -t euc-jp "$tmp" | kakasi -w | kakasi -Ja -Ha -Ka -Ea | sed 's/ //g') "$tmp"
+        paste <(iconv --byte-subst='?' --unicode-subst='<U+%04X>' -f $f -t euc-jp "$tmp" | kakasi -w | kakasi -Ja -Ha -Ka -Ea | sed 's/ //g') "$tmp"
     else
         paste <(iconv -f $f -t euc-jp "$tmp" | kakasi -w | kakasi -Ja -Ha -Ka -Ea | sed 's/ //g') "$tmp"
     fi
