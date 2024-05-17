@@ -20,10 +20,21 @@ $ ./configure && make && make install
 
 #### a) Plugin manager
 
-zinit
+##### zinit
 ```
 zinit light aoyama-val/zsh-romaji-complete
 ```
+
+##### oh-my-zsh
+```
+git clone https://github.com/aoyama-val/zsh-romaji-complete.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-romaji-complete
+```
+
+.zshrcに以下を追加
+```
+plugins=([既存のplugin...] zsh-romaji-complete)
+```
+
 
 #### b) Manual
 
