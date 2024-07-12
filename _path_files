@@ -13,7 +13,7 @@ kanji-to-romaji() {
     local tmp="/tmp/kanji-to-romaji"
     cat > "$tmp"
     case $OSTYPE in
-        darwin*) local f=$(iconv -l | grep 'UTF.*MAC') ;;
+        darwin*) local f=$(iconv -l | grep 'UTF.*MAC' | sed 's/ .*//') ;;
         *) local f=utf8 ;;
     esac
     if iconv --version 2> /dev/null | grep 'GNU libiconv' > /dev/null; then
