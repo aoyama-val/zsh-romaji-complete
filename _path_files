@@ -20,7 +20,7 @@ kanji-to-romaji() {
         # iconv (GNU libiconv 1.11) (Mac)
         paste <(iconv --byte-subst='?' --unicode-subst='<U+%04X>' -f $f -t euc-jp "$tmp" | kakasi -w | kakasi -Ja -Ha -Ka -Ea | sed 's/ //g') "$tmp"
     else
-        paste <(iconv -f $f -t euc-jp "$tmp" | kakasi -w | kakasi -Ja -Ha -Ka -Ea | sed 's/ //g') "$tmp"
+        paste <(iconv -f $f -t euc-jp "$tmp" | kakasi -w | kakasi -Ja -Ha -Ka -Ea -ka | sed 's/ //g') "$tmp"
     fi
     rm "$tmp"
 }
