@@ -53,3 +53,7 @@ fpath+=({クローンしたディレクトリ} $fpath)
 ```
 
 zshのデフォルトでは `^I` は `expand-or-complete`ですが、それだと候補が複数ある場合に何も補完されません。
+
+## Related works
+
+- [Qiita - zshで日本語ファイル名をローマ字でタブ補完する（kakasi利用）](https://qiita.com/okmt765/items/208b16ca928ab5fd8520)
